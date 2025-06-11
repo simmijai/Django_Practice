@@ -3,5 +3,4 @@ from .models import Student
 
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
-    list_display = ['name', 'email', 'gender', 'phone', 'date_of_birth']
-    search_fields = ['name', 'email']
+    list_display = ('id', 'name', 'email', 'gender', 'date_of_birth')  # ✅ All fields must exist
