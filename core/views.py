@@ -6,6 +6,10 @@ from .models import Student
 from .forms import StudentForm
 from django.contrib import messages
 from core.utils.logger import logger
+from django.contrib.auth.decorators import login_required
+import logging
+logger = logging.getLogger(__name__)
+
 
 
 
@@ -109,3 +113,8 @@ def delete_student(request, pk):
         student.delete()
         return redirect('student_list')
     return render(request, 'core/confirm_delete.html', {'student': student})
+
+@login_required
+def dashboard_view(request):
+    logger.info(f"User {request.user.username} accessed dashboard.")
+    return render(request, 'core/dashboard.html')
