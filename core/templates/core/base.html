@@ -7,6 +7,14 @@
 <body>
   <h1>SmartStudent Portal</h1>
   <hr>
+  {% if messages %}
+  <ul>
+    {% for message in messages %}
+      <li style="color: green;">{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
   {% block content %}{% endblock %}
 </body>
 </html>
